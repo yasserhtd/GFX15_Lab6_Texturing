@@ -52,10 +52,12 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>opengl32.lib;glew32.lib;glfw3.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -76,6 +78,25 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Application Manager\ApplicationManager.cpp" />
+    <ClCompile Include="EulerCamera\EulerCamera.cpp" />
+    <ClCompile Include="FPCamera\FPCamera.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="Model\Model.cpp" />
+    <ClCompile Include="Renderer\Renderer.cpp" />
+    <ClCompile Include="Shaders\shader.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Application Manager\ApplicationManager.h" />
+    <ClInclude Include="EulerCamera\EulerCamera.h" />
+    <ClInclude Include="FPCamera\FPCamera.h" />
+    <ClInclude Include="Model\Model.h" />
+    <ClInclude Include="Renderer\Renderer.h" />
+    <ClInclude Include="Shaders\shader.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="MultiColor.fragmentshader" />
+    <None Include="SimpleTransformWithColor.vertexshader" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
