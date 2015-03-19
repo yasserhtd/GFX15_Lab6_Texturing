@@ -38,7 +38,15 @@ void Model::Initialize()
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, mIndicesDataBufferID);
 		glBufferData(GL_ELEMENT_ARRAY_BUFFER, IndicesData.size() * sizeof(unsigned short), &IndicesData[0] , GL_STATIC_DRAW);
 	}
-
+	if (UVData.size() > 0)
+	{
+		glGenBuffers(1, &mUVDataBufferID);
+		glBindBuffer(GL_ARRAY_BUFFER, mUVDataBufferID);
+		glBufferData(GL_ARRAY_BUFFER, UVData.size() * sizeof(glm::vec2) , &UVData[0], GL_STATIC_DRAW);
+		glEnableVertexAttribArray(2);
+		//note that the number of elements = 2 because UV coords are of type vec2
+		glVertexAttribPointer(2,2,GL_FLOAT,GL_FALSE,0,(void*)0);
+	}
 	//now all the state is save in the Vertex Array Object, we only need to bind it in the drawing code (each frame).
 }
 
@@ -61,5 +69,6 @@ void Model::Cleanup()
 	glDeleteBuffers(1, &mVertexDataBufferID);
 	glDeleteBuffers(1, &mColorDataBufferID);
 	glDeleteBuffers(1, &mIndicesDataBufferID);
+	glDeleteBuffers(1, &mUVDataBufferID);
 	glDeleteVertexArrays(1, &mVertexArrayObjectID); 
 }

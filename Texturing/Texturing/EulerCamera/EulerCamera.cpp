@@ -103,7 +103,9 @@ void EulerCamera::Yaw(float angleDegrees)
 
 void EulerCamera::Pitch(float angleDegrees)
 {
-	mAngleY +=angleDegrees;
+	double PI = 3.14;
+	if (mAngleY + angleDegrees < PI/2.0 && mAngleY + angleDegrees > - PI/2.0)
+		mAngleY +=angleDegrees;
 }
 
 void EulerCamera::Roll(float angleDegrees)

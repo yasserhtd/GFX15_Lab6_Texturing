@@ -3,25 +3,41 @@
 
 #include <gl/glew.h>
 #include <gl/glfw3.h>
-
-#include "Shaders/shader.hpp"
-// Include GLM
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <memory>
+
+
+#include "Shaders/shader.hpp"
+#include "Texture/texture.h"
 #include "Model/Model.h"
 #include "FPCamera/FPCamera.h"
 #include "EulerCamera/EulerCamera.h"
 
 class Renderer
 {
+	enum RenderingMode
+	{
+		NO_TEXTURE,
+		TEXTURE_ONLY,
+		BLEND
+	};
+
     GLuint programID;
     
 	// Transformation
 	GLuint MatrixID;
+	
 	std::unique_ptr<Model> myTriangle;
 	std::unique_ptr<Model> mySquare;
-	std::unique_ptr<FPCamera> myCamera;
+	//std::unique_ptr<FPCamera> myCamera;
+	std::unique_ptr<EulerCamera> myCamera;
+
+	std::unique_ptr<Texture> mTexture1;
+	std::unique_ptr<Texture> mTexture2;
+
+	GLuint mRenderingModeID;
+	RenderingMode mRenderingMode;
 
 	glm::mat4 triangle1M;
 	glm::mat4 triangle2M;
@@ -29,6 +45,10 @@ class Renderer
 	glm::mat4 triangle4M;
 
 	glm::mat4 floorM;
+
+
+
+
 public:
     Renderer();
     ~Renderer();
@@ -42,3 +62,4 @@ public:
 };
 
 #endif // Renderer_h__
+

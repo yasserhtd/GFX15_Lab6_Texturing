@@ -85,6 +85,8 @@
     <ClCompile Include="Model\Model.cpp" />
     <ClCompile Include="Renderer\Renderer.cpp" />
     <ClCompile Include="Shaders\shader.cpp" />
+    <ClCompile Include="Texture\Texture Loader\stb_image.c" />
+    <ClCompile Include="Texture\texture.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application Manager\ApplicationManager.h" />
@@ -93,6 +95,8 @@
     <ClInclude Include="Model\Model.h" />
     <ClInclude Include="Renderer\Renderer.h" />
     <ClInclude Include="Shaders\shader.hpp" />
+    <ClInclude Include="Texture\Texture Loader\stb_image.h" />
+    <ClInclude Include="Texture\texture.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="MultiColor.fragmentshader" />

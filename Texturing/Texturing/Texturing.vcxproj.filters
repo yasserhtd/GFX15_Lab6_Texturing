@@ -31,6 +31,12 @@
     <Filter Include="Model">
       <UniqueIdentifier>{bd94d542-5103-4045-80c7-9fd2141c4dbe}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Texture">
+      <UniqueIdentifier>{b7c321dd-7c35-4b35-a315-5d116b14c95b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Texture\Texture Loader">
+      <UniqueIdentifier>{a8af9eff-46fe-4375-80ff-7467b87b5501}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Application Manager\ApplicationManager.cpp">
@@ -54,6 +60,12 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Texture\texture.cpp">
+      <Filter>Texture</Filter>
+    </ClCompile>
+    <ClCompile Include="Texture\Texture Loader\stb_image.c">
+      <Filter>Texture\Texture Loader</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application Manager\ApplicationManager.h">
@@ -73,6 +85,12 @@
     </ClInclude>
     <ClInclude Include="Renderer\Renderer.h">
       <Filter>Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="Texture\texture.h">
+      <Filter>Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="Texture\Texture Loader\stb_image.h">
+      <Filter>Texture\Texture Loader</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -15,8 +15,8 @@ Renderer::~Renderer()
 
 void Renderer::Initialize()
 {
-	myCamera = std::unique_ptr<FPCamera>(new FPCamera());
-	//myCamera = std::unique_ptr<EulerCamera>(new EulerCamera());
+	//myCamera = std::unique_ptr<FPCamera>(new FPCamera());
+	myCamera = std::unique_ptr<EulerCamera>(new EulerCamera());
 
 	myTriangle = std::unique_ptr<Model>(new Model());
 
@@ -28,6 +28,9 @@ void Renderer::Initialize()
 	myTriangle->ColorData.push_back(glm::vec3(0.0f, 1.0f, 0.0f));
 	myTriangle->ColorData.push_back(glm::vec3(0.0f, 0.0f, 1.0f));
 
+	myTriangle->UVData.push_back(glm::vec2(0.0f,0.0f));
+	myTriangle->UVData.push_back(glm::vec2(1.0f,0.0f));
+	myTriangle->UVData.push_back(glm::vec2(0.0f,1.0f));
 	myTriangle->Initialize();
 
 	//drawing a square.
@@ -55,10 +58,24 @@ void Renderer::Initialize()
 	mySquare->Initialize();
 
 	
+	//////////////////////////////////////////////////////////////////////////
+	// loading and initalizing textures.
+	mTexture1 = std::unique_ptr<Texture>(new Texture("uvtemplate.bmp",0));
+	mTexture2 = std::unique_ptr<Texture>(new Texture("bricks.jpg",1));
+	//////////////////////////////////////////////////////////////////////////
+
+	
+
+
 
 	// Create and compile our GLSL program from the shaders
 	programID = LoadShaders( "SimpleTransformWithColor.vertexshader", "MultiColor.fragmentshader" );
 	
+
+	//////////////////////////////////////////////////////////////////////////
+	mRenderingModeID = glGetUniformLocation(programID,"RenderingMode");
+	//////////////////////////////////////////////////////////////////////////
+
 	/////////////////////////////////////////////////////////////////////////////////////////////
 	// Transformations
 	////////////////////
@@ -92,10 +109,15 @@ void Renderer::Draw()
 		// Use our shader
 		glUseProgram(programID);
 
+		//send the rendering mode to the shader.
+		mRenderingMode = RenderingMode::TEXTURE_ONLY;
+		glUniform1i(mRenderingModeID,mRenderingMode);
+
 		// Send our transformation to the currently bound shader, 
 		// in the "MVP" uniform
 		glm::mat4 VP = myCamera->GetProjectionMatrix() * myCamera->GetViewMatrix();
 		
+		mTexture1->Bind();
 		//1st triangle
 		glm::mat4 triangle1MVP =   VP * triangle1M; 
 		glUniformMatrix4fv(MatrixID, 1, GL_FALSE, &triangle1MVP[0][0]);
@@ -106,15 +128,27 @@ void Renderer::Draw()
 		glUniformMatrix4fv(MatrixID, 1, GL_FALSE, &triangle2MVP[0][0]);
 		myTriangle->Draw();
 
+		mTexture2->Bind();
 		//3rd triangle
 		glm::mat4 triangle3MVP =   VP * triangle3M; 
 		glUniformMatrix4fv(MatrixID, 1, GL_FALSE, &triangle3MVP[0][0]);
 		myTriangle->Draw();
 
+
+		//////////////////////////////////////////////////////////////////////////
+		// change the rendering mode to blend textures.
+		mRenderingMode = RenderingMode::BLEND;
+
+		glUniform1i(mRenderingModeID,mRenderingMode);
 		//4th triangle
 		glm::mat4 triangle4MVP =   VP * triangle4M; 
 		glUniformMatrix4fv(MatrixID, 1, GL_FALSE, &triangle4MVP[0][0]);
 		myTriangle->Draw();
+
+		//////////////////////////////////////////////////////////////////////////
+		// change the rendering mode to blend textures.
+		mRenderingMode = RenderingMode::NO_TEXTURE;
+		glUniform1i(mRenderingModeID,mRenderingMode);
 
 		//the floor
 		glm::mat4 floorMVP =  VP * floorM; 
