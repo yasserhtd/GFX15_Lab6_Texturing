@@ -110,7 +110,7 @@ void ApplicationManager::StartMainLoop()
 		if (ApplicationManager::MouseXPos != ApplicationManager::WindowSizeWidth/2
 		 || ApplicationManager::MouseYPos != ApplicationManager::WindowSizeHeight/2)
 		{
-			double mouseSpeed = 0.005; //it is just there to speed up or slow down the movements.
+			double mouseSpeed = 0.05; //it is just there to speed up or slow down the movements.
 			double movedDistanceX;
 			double movedDistanceY;
 

@@ -87,6 +87,7 @@
     <ClCompile Include="Shaders\shader.cpp" />
     <ClCompile Include="Texture\Texture Loader\stb_image.c" />
     <ClCompile Include="Texture\texture.cpp" />
+    <ClCompile Include="Third Person Camera\ThirdPersonCamera.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application Manager\ApplicationManager.h" />
@@ -97,6 +98,7 @@
     <ClInclude Include="Shaders\shader.hpp" />
     <ClInclude Include="Texture\Texture Loader\stb_image.h" />
     <ClInclude Include="Texture\texture.h" />
+    <ClInclude Include="Third Person Camera\ThirdPersonCamera.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="MultiColor.fragmentshader" />

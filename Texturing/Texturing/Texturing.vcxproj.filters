@@ -37,6 +37,9 @@
     <Filter Include="Texture\Texture Loader">
       <UniqueIdentifier>{a8af9eff-46fe-4375-80ff-7467b87b5501}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Third Person Camera">
+      <UniqueIdentifier>{d048c82b-06cc-493c-8eec-7fdad776e75a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Application Manager\ApplicationManager.cpp">
@@ -66,6 +69,9 @@
     <ClCompile Include="Texture\Texture Loader\stb_image.c">
       <Filter>Texture\Texture Loader</Filter>
     </ClCompile>
+    <ClCompile Include="Third Person Camera\ThirdPersonCamera.cpp">
+      <Filter>Third Person Camera</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application Manager\ApplicationManager.h">
@@ -86,11 +92,14 @@
     <ClInclude Include="Renderer\Renderer.h">
       <Filter>Renderer</Filter>
     </ClInclude>
-    <ClInclude Include="Texture\texture.h">
-      <Filter>Texture</Filter>
-    </ClInclude>
     <ClInclude Include="Texture\Texture Loader\stb_image.h">
       <Filter>Texture\Texture Loader</Filter>
+    </ClInclude>
+    <ClInclude Include="Third Person Camera\ThirdPersonCamera.h">
+      <Filter>Third Person Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="Texture\texture.h">
+      <Filter>Texture</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

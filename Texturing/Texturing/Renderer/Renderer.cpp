@@ -16,7 +16,7 @@ Renderer::~Renderer()
 void Renderer::Initialize()
 {
 	//myCamera = std::unique_ptr<FPCamera>(new FPCamera());
-	myCamera = std::unique_ptr<EulerCamera>(new EulerCamera());
+	myCamera = std::unique_ptr<ThirdPersonCamera>(new ThirdPersonCamera());
 
 	myTriangle = std::unique_ptr<Model>(new Model());
 

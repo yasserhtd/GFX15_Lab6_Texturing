@@ -13,7 +13,7 @@
 #include "Model/Model.h"
 #include "FPCamera/FPCamera.h"
 #include "EulerCamera/EulerCamera.h"
-
+#include "Third Person Camera/ThirdPersonCamera.h"
 class Renderer
 {
 	enum RenderingMode
@@ -31,7 +31,7 @@ class Renderer
 	std::unique_ptr<Model> myTriangle;
 	std::unique_ptr<Model> mySquare;
 	//std::unique_ptr<FPCamera> myCamera;
-	std::unique_ptr<EulerCamera> myCamera;
+	std::unique_ptr<ThirdPersonCamera> myCamera;
 
 	std::unique_ptr<Texture> mTexture1;
 	std::unique_ptr<Texture> mTexture2;
