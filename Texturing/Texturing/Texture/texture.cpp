@@ -22,7 +22,7 @@ Texture::Texture(const std::string& fileName, int texUnit_)
 	//OpenGL 3.0+ only!
 	glGenerateMipmap(GL_TEXTURE_2D);
 	
-	glBindTexture(GL_TEXTURE_2D, 0); 
+	//glBindTexture(GL_TEXTURE_2D, 0); 
 
     stbi_image_free(data);
 }

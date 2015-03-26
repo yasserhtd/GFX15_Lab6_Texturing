@@ -9,7 +9,10 @@ out vec3 color;
 
 //texture sampler
 uniform sampler2D myTextureSampler;
+uniform sampler2D myTextureSampler2;
+
 uniform int RenderingMode;
+
 void main()
 {
 
@@ -17,9 +20,11 @@ void main()
 	if(RenderingMode == 0)
 		color = fragmentColor;
 	//2) calculate fragment color from sample extracted by the sampler.
-	if(RenderingMode == 1)
+	else if(RenderingMode == 1)
 		color = texture( myTextureSampler, TexCoord ).rgb;
 	//3) calculate fragment color by combining the fragment color and the texture sample.
-	if(RenderingMode == 2)
-		color = texture(myTextureSampler, TexCoord).rgb + fragmentColor;
+	else if(RenderingMode == 2)
+		color = 0.5*(texture(myTextureSampler, TexCoord).rgb + fragmentColor);
+	else if(RenderingMode == 3)
+		color = 0.5f * (texture( myTextureSampler, TexCoord ).rgb + texture(myTextureSampler2, TexCoord).rgb);
 }
