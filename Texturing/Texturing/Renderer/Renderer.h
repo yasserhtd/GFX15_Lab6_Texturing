@@ -20,7 +20,8 @@ class Renderer
 	{
 		NO_TEXTURE,
 		TEXTURE_ONLY,
-		BLEND
+		BLEND,
+		MULTIPLE_TEXTURES
 	};
 
     GLuint programID;
@@ -28,6 +29,8 @@ class Renderer
 	// Transformation
 	GLuint MatrixID;
 	
+	GLuint mSampler1ID,mSampler2ID;
+
 	std::unique_ptr<Model> myTriangle;
 	std::unique_ptr<Model> mySquare;
 	//std::unique_ptr<FPCamera> myCamera;
